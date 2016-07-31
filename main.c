@@ -13,7 +13,10 @@ void TestFunction(TypeIdFn aStandardLibFn,
 {
   for (int i = 0; i < 128; ++i)
   {
-    if (aStandardLibFn(i) != aUserFn(i))
+    int standard = aStandardLibFn(i) ? 1 : 0;
+    int user = aUserFn(i) ? 1 : 0;
+
+    if (standard != user)
     {
       printf("There was an error with %s, when testing with %d. \n", aFunctionName, i);
     }
@@ -29,14 +32,14 @@ void TestFunction(TypeIdFn aStandardLibFn,
 int main()
 {
   RunTest(isspace);
-  RunTest(isdigit);
-  RunTest(isxdigit);
-  RunTest(islower);
-  RunTest(isupper);
-  RunTest(isalpha);
-  RunTest(isalnum);
-  RunTest(iscntrl);
-  RunTest(isgraph);
-  RunTest(isprint);
-  RunTest(ispunct);
+  /* RunTest(isdigit);
+     RunTest(isxdigit);
+     RunTest(islower); 
+     RunTest(isupper); 
+     RunTest(isalpha); 
+     RunTest(isalnum); 
+     RunTest(iscntrl); 
+     RunTest(isgraph); 
+     RunTest(isprint); 
+     RunTest(ispunct); */
 }
